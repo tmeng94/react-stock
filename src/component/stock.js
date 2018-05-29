@@ -19,10 +19,15 @@ class Stock extends React.Component {
     }
 
     sendRequest(params) {
-        request.searchRequest(params).then(res => {
-            console.log(res.data);
-            this.setState({data: res.data})
-        });
+        if ('similarUrl' in params && params.similarUrl) {
+            request.searchWithSimilarUrlRequest(params).then(res => {
+                this.setState({data: res.data});
+            });
+        } else {
+            request.searchRequest(params).then(res => {
+                this.setState({data: res.data});
+            });
+        }
     }
 
     render() {

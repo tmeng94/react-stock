@@ -10,6 +10,7 @@ class StockForm extends React.Component {
             apiKey: Consts.defaultApiKey,
             integrationName: Consts.defaultIntegrationName,
             keyword: '',
+            similarUrl: '',
             limit: 10,
             locale: 'en_US'
         };
@@ -36,7 +37,6 @@ class StockForm extends React.Component {
                         name="apiKey"
                         value={this.state.apiKey}
                         onChange={this.handleChange}
-                        // ref={(input) => this.setState({apiKey: input.value})}
                     />
                     <ControlLabel>Adobe I/O integration name:</ControlLabel>
                     <FormControl
@@ -44,16 +44,22 @@ class StockForm extends React.Component {
                         name="integrationName"
                         value={this.state.integrationName}
                         onChange={this.handleChange}
-                        // ref={(input) => this.setState({integrationName: input.value})}
                     />
                     <ControlLabel>Search keyword:</ControlLabel>
                     <FormControl
                         type="text"
                         name="keyword"
-                        placeholder="Enter your search keyword here"
+                        placeholder="Enter your search keyword here (ignored if an image link is given below)"
                         value={this.state.keyword}
                         onChange={this.handleChange}
-                        // ref={(input) => this.setState({keyword: input.value})}
+                    />
+                    <ControlLabel>Search by similar images:</ControlLabel>
+                    <FormControl
+                        type="text"
+                        name="similarUrl"
+                        placeholder="Or enter an image link (PNG, JPG or GIF) to find similar assets"
+                        value={this.state.similarUrl}
+                        onChange={this.handleChange}
                     />
                     <ControlLabel>Number of results:</ControlLabel>
                     <FormControl
@@ -61,7 +67,6 @@ class StockForm extends React.Component {
                         name="limit"
                         value={this.state.limit}
                         onChange={this.handleChange}
-                        // ref={(input) => this.setState({limit: input.value})}
                     />
                     <ControlLabel>Locale:</ControlLabel>
                     <FormControl
@@ -69,7 +74,6 @@ class StockForm extends React.Component {
                         name="locale"
                         value={this.state.locale}
                         onChange={this.handleChange}
-                        // ref={(input) => this.setState({locale: input.value})}
                     >
                         <option value="en_US">English (United States)</option>
                         <option value="ja_JP">Japanese</option>
